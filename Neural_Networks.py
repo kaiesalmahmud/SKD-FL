@@ -27,7 +27,7 @@ def cnn_3layer_fc_model(n_classes,n1 = 128, n2=192, n3=256, dropout_rate = 0.2,i
     y = Dropout(dropout_rate)(y)
     y = AveragePooling2D(pool_size = (2,2), strides = 2, padding = "valid")(y)
 
-    y = Conv2D(filters = n3, kernel_size = (3,3), strides = 2, padding = "valid", 
+    y = Conv2D(filters = n3, kernel_size = (3,3), strides = 2, padding = "same", 
             activation = None)(y)
     y = BatchNormalization()(y)
     y = Activation("relu")(y)
@@ -103,7 +103,7 @@ def remove_last_layer(model, loss = "mean_absolute_error"):
 def train_models(models, X_train, y_train, X_test, y_test, 
                  save_dir = "./", save_names = None,
                  early_stopping = True, min_delta = 0.001, patience = 3, 
-                 batch_size = 128, epochs = 20, is_shuffle=True, verbose = 1
+                 batch_size = 128, epochs = 10, is_shuffle=True, verbose = 1
                 ):
     '''
     Train an array of models on the same dataset. 
