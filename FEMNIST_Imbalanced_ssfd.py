@@ -8,7 +8,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 from data_utils import load_MNIST_data, load_EMNIST_data, generate_EMNIST_writer_based_data, generate_partial_data
-from skd import FedMD
+from skd_threshold_25to50 import FedMD
 from Neural_Networks import train_models, cnn_2layer_fc_model, cnn_3layer_fc_model
 
 from tensorflow.keras.models import clone_model

@@ -9,7 +9,7 @@ import pandas as pd
 from tensorflow.keras.models import load_model
 
 from data_utils import load_CIFAR_data, load_CIFAR_from_local, generate_partial_data, generate_imbal_CIFAR_private_data
-from FedMD import FedMD
+from skd import FedMD
 from Neural_Networks import train_models, cnn_2layer_fc_model, cnn_3layer_fc_model
 
 

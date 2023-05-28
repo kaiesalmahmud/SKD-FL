@@ -122,7 +122,7 @@ class FedMD():
                 acc = np.mean(self.private_test_data["y"] == y_pred)
                 collaboration_performance[index].append(acc)
 
-                if acc>0.4:
+                if acc>0.3:
                     ind.append(index)
                 
                 print(collaboration_performance[index][-1])

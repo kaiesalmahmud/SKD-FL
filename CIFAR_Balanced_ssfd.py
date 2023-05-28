@@ -5,10 +5,11 @@ import sys
 import pickle
 
 import numpy as np
+import pandas as pd
 from tensorflow.keras.models import load_model
 
 from data_utils import load_CIFAR_data, generate_partial_data, generate_bal_private_data
-from skd import FedMD
+from skd_threshold_25to50 import FedMD
 from Neural_Networks import train_models, cnn_2layer_fc_model, cnn_3layer_fc_model
 
 from tensorflow.keras.models import clone_model
@@ -175,6 +176,46 @@ if __name__ == "__main__":
     del  X_train_CIFAR10, y_train_CIFAR10, X_test_CIFAR10, y_test_CIFAR10, \
     X_train_CIFAR100, y_train_CIFAR100, X_test_CIFAR100, y_test_CIFAR100,
     
+    # Label propagation
+
+    for i in range(10):
+        print("model ", i)
+
+        device = i
+
+        X_train = private_data[device]['X']
+        y_train = private_data[device]['y']
+
+        X_lab, X_unlab, y_lab, y_unlab = train_test_split(X_train, y_train, test_size=0.5, random_state=1, stratify=y_train)
+
+        model_A_twin = None
+        model_A_twin = clone_model(parties[i]) # load private model
+        model_A_twin.set_weights(parties[i].get_weights())
+        model_A_twin.compile(optimizer=tf.keras.optimizers.Adam(lr = 1e-3), 
+                                loss = "sparse_categorical_crossentropy",
+                                metrics = ["accuracy"])
+
+        print("Semi-supervised training ... ")        
+
+        # train private models with private data
+        model_A_twin.fit(X_lab, y_lab,
+                            batch_size = 32, epochs = 25, shuffle=True, verbose = 0,
+                            validation_data = [private_test_data["X"], private_test_data["y"]],
+                            callbacks=[EarlyStopping(monitor='val_accuracy', min_delta=0.001, patience=10)]
+                        )
+
+        print("Semi-supervised training done")
+
+        y_pred = model_A_twin.predict(X_unlab).argmax(axis=1)
+
+        X_mixed = np.concatenate((X_lab, X_unlab))
+        y_mixed = np.concatenate((y_lab, y_pred))
+
+        private_data[device]['X'] = X_mixed
+        private_data[device]['y'] = y_mixed
+
+        del model_A_twin, X_mixed, y_mixed, X_lab, X_unlab, y_lab, y_unlab, X_train, y_train
+
     fedmd = FedMD(parties, 
                   public_dataset = public_dataset,
                   private_data = private_data, 
