@@ -19,10 +19,10 @@ from sklearn.model_selection import train_test_split
 
 import random as rn
 
-os.environ['PYTHONHASHSEED'] = 0
+os.environ['PYTHONHASHSEED'] = '0'
 np.random.seed(17)
 rn.seed(42)
-tf.set_random_seed(29)
+tf.random.set_seed(29)
 
 
 def parseArg():
