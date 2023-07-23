@@ -17,6 +17,14 @@ import tensorflow as tf
 
 from sklearn.model_selection import train_test_split
 
+import tensorflow as tf
+import random as rn
+
+os.environ['PYTHONHASHSEED'] = '0'
+np.random.seed(17)
+rn.seed(42)
+tf.random.set_seed(29)
+
 def parseArg():
     parser = argparse.ArgumentParser(description='FedMD, a federated learning framework. \
     Participants are training collaboratively. ')

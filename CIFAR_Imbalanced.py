@@ -12,6 +12,13 @@ from data_utils import load_CIFAR_data, load_CIFAR_from_local, generate_partial_
 from FedMD import FedMD
 from Neural_Networks import train_models, cnn_2layer_fc_model, cnn_3layer_fc_model
 
+import tensorflow as tf
+import random as rn
+
+os.environ['PYTHONHASHSEED'] = '0'
+np.random.seed(17)
+rn.seed(42)
+tf.random.set_seed(29)
 
 def parseArg():
     parser = argparse.ArgumentParser(description='FedMD, a federated learning framework. \
