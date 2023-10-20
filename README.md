@@ -32,7 +32,7 @@ Framework:
 ![Framework](thesis-fig/structure.png)
 
 
-#### Experiemnt: We test SKD algorithm on all four environements with 40% nodes poisoned
+#### Experiemnt: We test different variations of SKD algorithm on all four environements with 40% nodes poisoned
 
 #### Results:
 
@@ -78,3 +78,11 @@ CIFAR Balanced:
 CIFAR Imbalanced:
 
 ![SKD on Semi-supervised Setting: CIFAR Imbalanced](thesis-fig/ssfd/cifar-imbalanced.png)
+
+
+## Reproduce Resutls
+
+In order to reproduce the results:
+
+- Create an anaconda environment from the environment.yml file
+- Run the specific .py file for the experiment
