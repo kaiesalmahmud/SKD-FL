@@ -2,7 +2,7 @@
 
 This work builds on the work of [FedMD](https://arxiv.org/abs/1910.03581)
 
-### Hypothesis 01 : Introducing poisonous nodes in the federated network can have negative impact on collaborative learning
+## Hypothesis 01 : Introducing poisonous nodes in the federated network can have negative impact on collaborative learning
 
 #### Experiemnt: Introduce varying number of poisoned node in all four environments of FedMD an observe the impact on collaborative learning.
 
@@ -25,7 +25,7 @@ CIFAR Imbalanced:
 ![Poison variation: CIFAR Imbalanced](thesis-fig/poison-var/cifar-imbalanced.png)
 
 
-### Hypothesis 02 : Selective Knowledge Distillation (SKD) can minimize the impact of poisoned nodes in collaborative learning
+## Hypothesis 02 : Selective Knowledge Distillation (SKD) can minimize the impact of poisoned nodes in collaborative learning
 
 Framework:
 
@@ -52,7 +52,7 @@ CIFAR Imbalanced:
 
 ![SKD on Supervised Setting: CIFAR Imbalanced](thesis-fig/skd/cifar-imbalanced.png)
 
-### Hypothesis 03 : Selective Knowledge Distillation (SKD) will also work on semi-supervised setting
+## Hypothesis 03 : Selective Knowledge Distillation (SKD) will also work on semi-supervised setting
 
 Semi-supervised learning methodology:
 
