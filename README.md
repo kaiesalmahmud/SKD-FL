@@ -10,4 +10,4 @@ This work builds on the work of [FedMD](https://arxiv.org/abs/1910.03581)
 
 FEMNIST Balanced:
 
-![Poison variation: FEMNIST Balanced](thesis-fig\poison-var\femnist-balanced.png)
+![Poison variation: FEMNIST Balanced](thesis-fig/poison-var/femnist-balanced.png)
