@@ -56,7 +56,7 @@ CIFAR Imbalanced:
 
 Semi-supervised learning methodology:
 
-![Semi-supervised Algorithm](thesis-fig/semi-flow.png)
+![Semi-supervised Algorithm](thesis-fig/Semi flow.png)
 
 
 #### Experiemnt: We test SKD algorithm on all four environements with 40% nodes poisoned
