@@ -85,4 +85,4 @@ CIFAR Imbalanced:
 In order to reproduce the results:
 
 - Create an anaconda environment from the environment.yml file
-- Run the specific .py file for the experiment
+- Run the specific .py files for specific experiments
